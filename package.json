@@ -8,6 +8,7 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint  \"**/*.{js,jsx,ts,tsx}\"",
     "dev:start": "nodemon src/server.ts",
     "dev:db:start": "docker compose up -d",
     "dev:db:migrate": "npx prisma migrate dev",
