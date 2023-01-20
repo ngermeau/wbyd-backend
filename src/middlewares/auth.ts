@@ -1,9 +1,7 @@
 import jwt from "jsonwebtoken"
 import config from "../config/config"
 
-
 export function protect(req, res, next) {
-
   const authHeader = req.headers.authorization
 
   if (!validAuthHeader(authHeader)) {
@@ -20,7 +18,6 @@ export function protect(req, res, next) {
     res.json({ error: "invalid token" })
     return
   }
-
 }
 
 function validAuthHeader(authHeader) {

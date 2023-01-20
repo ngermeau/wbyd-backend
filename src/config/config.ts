@@ -4,5 +4,5 @@ export default {
   database: process.env.DATABASE,
   databaseUrl: process.env.DATABASE_URL,
   jwtSecret: process.env.JWT_SECRET,
-  jwtToken: process.env.JWT_TOKEN
+  jwtToken: process.env.JWT_TOKEN,
 }

@@ -1,7 +1,6 @@
-import app, { server } from '../src/server'
-import prismaClient from "../src/helpers/db";
-import request from 'supertest'
-
+import app, { server } from "../src/server"
+import prismaClient from "../src/helpers/db"
+import request from "supertest"
 
 beforeAll(async () => {
   await prismaClient.movie.create({
@@ -13,8 +12,9 @@ beforeAll(async () => {
       trailerLink: "https://www.youtube.com/watch?v=HY7mRdQuUSw",
       thumbPath: "img/lock-stock-and-two-smoking-barrels.jpg",
       imdbScore: 8.2,
-      synopsis: "Eddy persuades his three pals to pool money for a vital poker game against a powerful local mobster, Hatchet Harry. Eddy loses, after which Harry gives him a week to pay back 500,000 pounds."
-    }
+      synopsis:
+        "Eddy persuades his three pals to pool money for a vital poker game against a powerful local mobster, Hatchet Harry. Eddy loses, after which Harry gives him a week to pay back 500,000 pounds.",
+    },
   })
 })
 
@@ -31,7 +31,3 @@ describe("GET /movie", () => {
     expect(res.body.data.length >= 0).toBe(true)
   })
 })
-
-
-
-

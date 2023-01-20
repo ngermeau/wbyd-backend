@@ -1,5 +1,4 @@
-import prismaClient from "../helpers/db";
-
+import prismaClient from "../helpers/db"
 
 export async function createMovie(req) {
   return await prismaClient.movie.create({
@@ -13,14 +12,14 @@ export async function createMovie(req) {
       imdbScore: req.body.imdbScore,
       synopsis: req.body.synopsis,
       categories: {
-        connectOrCreate: req.body.categories.map(cat => {
+        connectOrCreate: req.body.categories.map((cat) => {
           return {
             where: { name: cat.name },
-            create: { name: cat.name }
+            create: { name: cat.name },
           }
-        })
-      }
-    }
+        }),
+      },
+    },
   })
 }
 
@@ -31,7 +30,7 @@ export async function getMovies(req) {
 export async function getMovie(req) {
   return await prismaClient.movie.findUnique({
     where: {
-      id: +req.params.id
-    }
+      id: +req.params.id,
+    },
   })
 }
