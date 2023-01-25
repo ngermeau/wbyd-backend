@@ -24,9 +24,15 @@ export async function createMovie(req) {
 }
 
 export async function getMovies(req) {
-  return await prismaClient.movie.findMany({include: {
-    categories: true
-  }})
+  return await prismaClient.movie.findMany({
+    include: {
+      categories: {
+        select: {
+          name: true
+        }
+      }
+    }
+  })
 }
 
 export async function getMovie(req) {
@@ -35,7 +41,7 @@ export async function getMovie(req) {
       id: +req.params.id,
     },
     include: {
-    categories: true
+      categories: true
     }
   })
 }
