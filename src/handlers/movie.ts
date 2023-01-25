@@ -41,7 +41,11 @@ export async function getMovie(req) {
       id: +req.params.id,
     },
     include: {
-      categories: true
+      categories: {
+        select: {
+          name: true
+        }
+      }
     }
   })
 }
