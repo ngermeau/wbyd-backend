@@ -14,6 +14,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get("/movie", async (req, res, next) => {
   try {
+    console.log(req.query.offset)
+    console.log(req.query.limit)
     let movies = await getMovies(req)
     res.json({ data: movies })
   } catch (e) {
@@ -41,6 +43,7 @@ app.post("/movie", protect, async (req: express.Request, res, next) => {
 
 app.use((err, req, res, next) => {
   console.log(err.stack)
+  res.status(500)
   res.json({ message: "An error occured" })
 })
 
