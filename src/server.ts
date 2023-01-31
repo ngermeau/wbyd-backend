@@ -12,10 +12,8 @@ app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 
-app.get("api/movie", async (req, res, next) => {
+app.get("/api/movie", async (req, res, next) => {
   try {
-    console.log(req.query.offset)
-    console.log(req.query.limit)
     let movies = await getMovies(req)
     res.json({ data: movies })
   } catch (e) {
@@ -23,7 +21,7 @@ app.get("api/movie", async (req, res, next) => {
   }
 })
 
-app.get("api/movie/:id", async (req, res, next) => {
+app.get("/api/movie/:id", async (req, res, next) => {
   try {
     let movie = await getMovie(req)
     res.json({ data: movie })
@@ -32,7 +30,7 @@ app.get("api/movie/:id", async (req, res, next) => {
   }
 })
 
-app.post("api/movie", protect, async (req: express.Request, res, next) => {
+app.post("/api/movie", protect, async (req: express.Request, res, next) => {
   try {
     let newMovie = await createMovie(req)
     res.json({ data: newMovie })
