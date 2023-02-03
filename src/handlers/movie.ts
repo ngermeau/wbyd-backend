@@ -27,6 +27,9 @@ export async function getMovies(req) {
   return await prismaClient.movie.findMany({
     skip: +req.query.offset,
     take: +req.query.limit,
+    orderBy: {
+      year: 'asc'
+    },
     include: {
       categories: {
         select: {
